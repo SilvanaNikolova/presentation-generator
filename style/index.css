@@ -1,51 +1,131 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #f0f4f8;
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
   color: #333;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: flex-start;
+  padding: 60px 20px;
+  box-sizing: border-box;
 }
 
 .container {
-  text-align: center;
+  width: 100%;
+  max-width: 420px;
   background: #fff;
   padding: 40px;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  width: 350px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
+  margin-top: 0;
   margin-bottom: 10px;
   font-size: 24px;
   color: #2c3e50;
+  text-align: center;
 }
 
 p {
   margin-bottom: 30px;
   color: #555;
+  text-align: center;
 }
 
-.buttons .btn {
-  display: inline-block;
-  margin: 10px;
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.buttons .btn, .buttons button {
   padding: 12px 25px;
   background-color: #007BFF;
   color: white;
   text-decoration: none;
+  border: none;
   border-radius: 8px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-.buttons .btn:hover {
+.buttons .btn:hover, .buttons button:hover {
   background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+form {
+  display: none;
+  margin-top: 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+form.show {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+}
+
+input {
+  display: block;
+  margin: 12px auto;
+  padding: 10px;
+  width: 85%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+  border-color: #007BFF;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+
+form button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #218838;
+  transform: scale(1.03);
+}
+
+#login-message, #registration-message {
+  margin-top: 12px;
+  font-weight: bold;
 }
 
 footer {
   margin-top: 30px;
   font-size: 12px;
   color: #888;
+  text-align: center;
 }

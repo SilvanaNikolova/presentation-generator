@@ -6,17 +6,25 @@ require_once "repository" . DIRECTORY_SEPARATOR . "user.php";
 function registration() {
 	try {
 		checkIfServerRequestMethodIsPOST();
+
+		// Взима подадените данни от формата
 		$formFields = getRegisterFormFields();
 
+		// Проверява дали потребителското име вече съществува
 		$user = new User();
 		$user->checkIfUserIsRegistered($formFields);
 
+		// Хеширане на паролата за сигурност
 		$formFields['passwordRegister'] = password_hash($formFields['passwordRegister'], PASSWORD_DEFAULT);
+		
+		// Добавяне на новия потребител в базата данни
 		$user->addUserData($formFields);
 
+		// Стартиране на сесия за новорегистрирания потребител
 		$_SESSION['loggedIn'] = true;
 		$_SESSION['username'] = $formFields['usernameRegister'];
 
+		// Потвърждение за успешна регистрация
 		$response = ['success' => true];
 		echo json_encode($response);
 	}
@@ -26,6 +34,7 @@ function registration() {
 	}
 }
 
+// Валидация и извличане на данните от формата
 function getRegisterFormFields(): array {
 	try {
 		$formFields = [];
@@ -41,6 +50,7 @@ function getRegisterFormFields(): array {
 	}
 }
 
+// Допълнителна функция за валидиране на имейл адрес
 function getEmail($fieldName) {
 	$formData = json_decode($_POST["formData"], true);
 	$email = $formData[$fieldName] ?? '';

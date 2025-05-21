@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Генериране на разписание</title>
   <link rel="stylesheet" href="style/index.css">
+  <script type="module" src="script/index.js" defer></script>
 </head>
 <body>
-
   <div class="container">
     <header>
       <h1>🎓 Университетско разписание</h1>
@@ -16,15 +16,30 @@
 
     <main>
       <div class="buttons">
-        <a href="login.html" class="btn">Вход</a>
-        <a href="register.html" class="btn">Регистрация</a>
+        <button id="show-login" class="btn">Вход</button>
+        <button id="show-register" class="btn">Регистрация</button>
       </div>
+
+      <form id="login-form">
+        <input type="text" id="login-username" placeholder="Потребителско име" required>
+        <input type="password" id="login-password" placeholder="Парола" required>
+        <button type="submit" id="enter-button">Влез</button>
+        <div id="login-message"></div>
+      </form>
+
+      <form id="register-form">
+        <input type="email" id="register-email" placeholder="Имейл" required>
+        <input type="text" id="register-username" placeholder="Потребителско име" required>
+        <input type="password" id="register-password" placeholder="Парола" required>
+        <input type="password" id="register-password-repeated" placeholder="Повтори паролата" required>
+        <button type="submit" id="register-button">Регистрирай се</button>
+        <div id="registration-message"></div>
+      </form>
     </main>
 
     <footer>
       <p>&copy; 2025 Университетска система за разписание</p>
     </footer>
   </div>
-
 </body>
 </html>

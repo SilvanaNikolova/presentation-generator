@@ -1,30 +1,36 @@
 <?php
 
+// Зареждане на файловете, които съдържат логиката за регистрация, вход и изход
 require_once "user_access" . DIRECTORY_SEPARATOR . "register.php";
 require_once "user_access" . DIRECTORY_SEPARATOR . "login.php";
 require_once "user_access" . DIRECTORY_SEPARATOR . "logout.php";
 
+// Клас Router отговаря за разпознаване и насочване на заявките към правилната функция
 class Router
 {
 	public function performAction($requestURL) {
+		// Задаване на тип на отговора като JSON с UTF-8 кодировка
 		header("Content-Type: application/json; charset=UTF-8");
 		session_start();
 
+		// Ограничаваме API-то да приема само POST заявки
 		if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 			echo json_encode(["success" => false, "error" => "Грешка: само POST заявки са разрешени."]);
 			return;
 		}
 
+		// Насочване на заявката към правилната функция според URL края
 		if (preg_match("/\/registration$/", $requestURL)) {
-			registration();
+			registration(); // Извиква се registration() от register.php
 		}
 		elseif (preg_match("/\/login$/", $requestURL)) {
-			login();
+			login(); // Извиква се login() от login.php
 		}
 		elseif (preg_match("/\/logout$/", $requestURL)) {
-			logout();
+			logout(); // Извиква се logout() от logout.php
 		}
 		else {
+			// Ако URL-ът не съвпада с никоя от очакваните крайни точки
 			echo json_encode(["success" => false, "error" => "Грешка: невалиден API път."]);
 		}
 	}

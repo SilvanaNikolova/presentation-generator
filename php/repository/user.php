@@ -1,13 +1,16 @@
 <?php
 require_once "database.php";
 
+// Клас User инкапсулира всички операции, свързани с потребители
 class User {
 	private $database;
 
+	// Създава нова инстанция и осъществява връзка с базата
 	public function __construct() {
 		$this->database = new Database();
 	}
 
+	// Добавя нов потребител в базата чрез подадените полета
 	public function addUserData(array &$formFields) {
         $data = [
 		'username' => $formFields['usernameRegister'],
@@ -22,6 +25,7 @@ class User {
 		}
 	}
 
+	// Проверява дали потребителят вече е регистриран
 	public function checkIfUserIsRegistered(array &$formFields) {
 		$user = $this->selectUserByUsername($formFields['usernameRegister']);
 
@@ -30,6 +34,7 @@ class User {
 		}
 	}
 
+	// Проверява дали потребителят съществува и дали паролата е вярна
 	public function checkIfUserExists(array &$formFields) {
 		$user = $this->selectUserByUsername($formFields['usernameLogin']);
 
@@ -42,6 +47,7 @@ class User {
 		}
 	}
 
+	// Извлича потребител по потребителско име от базата
 	private function selectUserByUsername($username) {
 		$result = $this->database->selectUserByUsername($username);
 
@@ -49,7 +55,7 @@ class User {
 			return $result;
 		}
 
-		// Поддържа PDOStatement
+		// Ако връща PDOStatement, извличаме асоциативен масив
 		return $result->fetch(PDO::FETCH_ASSOC);
 	}
 }

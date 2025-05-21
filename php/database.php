@@ -4,6 +4,7 @@ class Database
 {
 	private $connection;
 
+	// Чете конфигурацията от .ini файл и създава връзка с базата
 	public function __construct() {
 		$config = parse_ini_file(__DIR__ . "/../config/config.ini", true);
 
@@ -15,10 +16,12 @@ class Database
 		$this->initialize($host, $dbname, $user, $password);
 	}
 
+	// Затваря връзката с базата
 	public function __destruct() {
 		$this->connection = null;
 	}
 
+	// Създава PDO връзка с база данни
 	private function initialize($host, $database, $user, $password) {
 		try {
 			$this->connection = new PDO(
@@ -33,6 +36,7 @@ class Database
 	}
 
 	// Регистрация на потребител
+	// Вмъква нов потребител в таблицата user
 	public function insertUser($data) {
 		try {
 			$sql = "INSERT INTO user (username, password, email) VALUES (:username, :password, :email);";
