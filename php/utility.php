@@ -36,4 +36,22 @@ function getPassword($fieldName) {
 	return formatInput($password);
 }
 
+function checkSessionSet() {
+	if (!isset($_SESSION)) {
+		session_start();
+	}
+
+	if (!isset($_SESSION['loggedIn'])) {
+		throw new Exception("Грешка: няма започната сесия");
+	}
+
+	if ($_SESSION['loggedIn'] === false) {
+		throw new Exception("Грешка: потребителят не е вписан в системата");
+	}
+
+	if (!isset($_SESSION['username']) || $_SESSION['username'] === false) {
+		throw new Exception("Грешка: потребителското име не е в сесията");
+	}
+} 
+
 ?>

@@ -1,17 +1,50 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-	<meta charset="UTF-8">
-	<title>Dashboard</title>
-    <script type="module" src="script/logout.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Презентации</title>
+  <link rel="stylesheet" href="style/dashboard.css">
+  <script type="module" src="script/dashboard.js" defer></script>
 </head>
 <body>
+  <nav class="navbar">
+    <button id="all-presentations-btn">Всички презентации</button>
+    <button id="preferences-btn">Предпочитания</button>
+    <button id="logout-btn">Изход</button>
+  </nav>
 
-<div class="container">
-	<h2>Изход</h2>
-	<button id="logout-button">Изход</button>
-	<p id="error"></p>
-</div>
+  <div class="container">
+    <h1 id="section-title">Всички презентации</h1>
 
+    <section id="presentations-section">
+      <table id="presentation-table">
+        <thead>
+          <tr>
+            <th>Заглавие</th>
+            <th>Презентатор</th>
+            <th>Фак. номер</th>
+            <th>Дата</th>
+            <th>Място</th>
+            <th>Предпочитание</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="preferences-section" style="display:none;">
+      <table id="preferences-table">
+        <thead>
+          <tr>
+            <th>Заглавие</th>
+            <th>Дата</th>
+            <th>Предпочитание</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </div>
 </body>
 </html>

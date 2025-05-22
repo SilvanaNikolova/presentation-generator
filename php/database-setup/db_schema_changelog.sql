@@ -16,3 +16,21 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`username`)
 );
+
+CREATE TABLE IF NOT EXISTS `presentation` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `title` VARCHAR(255) NOT NULL,
+  `presenterName` VARCHAR(255) NOT NULL,
+  `facultyNumber` VARCHAR(20) NOT NULL,
+  `date` DATE NOT NULL,
+  `place` VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS `preference` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `username` VARCHAR(255) NOT NULL,
+  `presentationId` INT NOT NULL,
+  `preferenceType` ENUM('attending', 'not_attending', 'maybe'),
+  FOREIGN KEY (`username`) REFERENCES `user`(`username`) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (`presentationId`) REFERENCES `presentation`(`id`) ON UPDATE CASCADE ON DELETE CASCADE
+);

@@ -4,6 +4,9 @@
 require_once "user_access" . DIRECTORY_SEPARATOR . "register.php";
 require_once "user_access" . DIRECTORY_SEPARATOR . "login.php";
 require_once "user_access" . DIRECTORY_SEPARATOR . "logout.php";
+require_once "content_manager" . DIRECTORY_SEPARATOR . "dashboard.php";
+require_once "content_manager" . DIRECTORY_SEPARATOR . "set_preference.php";
+require_once "content_manager" . DIRECTORY_SEPARATOR . "load_preferences.php";
 
 // Клас Router отговаря за разпознаване и насочване на заявките към правилната функция
 class Router
@@ -28,6 +31,15 @@ class Router
 		}
 		elseif (preg_match("/\/logout$/", $requestURL)) {
 			logout(); // Извиква се logout() от logout.php
+		}
+		elseif (preg_match("/\/loadDashboard$/", $requestURL)) {
+			loadDashboardData();
+		}
+		elseif (preg_match("/\/setPreference$/", $requestURL)) {
+			setPreference();
+		}
+		elseif (preg_match("/\\/loadPreferences$/", $requestURL)) {
+			loadPreferences();
 		}
 		else {
 			// Ако URL-ът не съвпада с никоя от очакваните крайни точки
