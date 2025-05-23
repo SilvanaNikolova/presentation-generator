@@ -67,19 +67,4 @@ class Preference {
         ]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
-    // public function getPreferencesPage($username, $offset, $limit) {
-    //     $sql = "SELECT p.title, pr.preferenceType 
-    //             FROM preference pr
-    //             JOIN presentations p ON pr.presentationId = p.id
-    //             WHERE pr.username = :username
-    //             LIMIT :limit OFFSET :offset";
-    //     $stmt = $this->db->getConnection()->prepare($sql);
-    //     $stmt->bindValue(':username', $username, PDO::PARAM_STR);
-    //     $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
-    //     $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
-    //     $stmt->execute();
-    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // }
-
 }
