@@ -10,6 +10,7 @@ CREATE DATABASE IF NOT EXISTS `web_schedule`;
 USE `web_schedule`;
 
 -- Таблица: user
+-- Ключ: username
 CREATE TABLE IF NOT EXISTS `user` (
   `username` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
@@ -17,6 +18,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`username`)
 );
 
+-- Таблица: presentation
+-- Ключ: id
 CREATE TABLE IF NOT EXISTS `presentation` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `title` VARCHAR(255) NOT NULL,
@@ -26,6 +29,10 @@ CREATE TABLE IF NOT EXISTS `presentation` (
   `place` VARCHAR(100) NOT NULL
 );
 
+-- Таблица: preference
+-- Ключ: id
+-- Външен ключ: username -> user(username)
+-- Външен ключ: presentationId -> presentation(id)
 CREATE TABLE IF NOT EXISTS `preference` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `username` VARCHAR(255) NOT NULL,

@@ -1,3 +1,4 @@
+// Превежда стойностите на предпочитанията от английски на български
 const translatePreference = type => {
   switch (type) {
     case "attending": return "Ще присъствам";
@@ -7,27 +8,34 @@ const translatePreference = type => {
   }
 };
 
+// Основната логика се изпълнява след зареждане на страницата
 document.addEventListener("DOMContentLoaded", async () => {
+
+    // Взимат се HTML елементите за двете секции и заглавието
     const presentationsSection = document.getElementById("presentations-section");
     const preferencesSection = document.getElementById("preferences-section");
     const title = document.getElementById("section-title");
 
+    // Превключване към изглед "Всички презентации"
     document.getElementById("all-presentations-btn").addEventListener("click", () => {
       presentationsSection.style.display = "block";
       preferencesSection.style.display = "none";
       title.textContent = "Всички презентации";
     });
 
+    // Превключване към изглед "Моите предпочитания" и зареждане на предпочитанията от сървъра
     document.getElementById("preferences-btn").addEventListener("click", async () => {
         presentationsSection.style.display = "none";
         preferencesSection.style.display = "block";
         title.textContent = "Моите предпочитания";
 
+        // Извиква се API заявка към сървъра за зареждане на предпочитания
         const res = await fetch("php/api.php/loadPreferences", { method: "POST" });
         const data = await res.json();
         const tbody = document.querySelector("#preferences-table tbody");
         tbody.innerHTML = "";
 
+        // Ако заявката е успешна, се показват предпочитанията
         if (data.success) {
           data.data.forEach(pref => {
             const tr = document.createElement("tr");
@@ -43,6 +51,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
+    // Бутон за изход от системата - извиква API и пренасочва към началната страница
     document.getElementById("logout-btn").addEventListener("click", async () => {
         const res = await fetch("php/api.php/logout", { method: "POST" });
         const result = await res.json();
@@ -53,6 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
+    // Зарежда се началната информация за всички презентации
     const response = await fetch("php/api.php/loadDashboard", { method: "POST" });
     const result = await response.json();
 
@@ -77,16 +87,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
         tbody.appendChild(tr);
 
+        // Ако вече има избрано предпочитание, то се показва
         const select = tr.querySelector("select.preference");
         if (select && presentation.preferenceType) {
           select.value = presentation.preferenceType;
         }
         });
 
+        // Добавяне на слушател за всяка селекция за предпочитания
         document.querySelectorAll(".preference").forEach(select => {
           select.addEventListener("change", async (e) => {
             const title = e.target.getAttribute("data-title");
             const preferenceType = e.target.value;
+            
+            // Изпращане на избраното предпочитание към сървъра
             const response = await fetch("php/api.php/setPreference", {
               method: "POST",
               headers: { "Content-Type": "application/x-www-form-urlencoded" },

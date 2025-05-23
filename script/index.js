@@ -3,8 +3,12 @@ const registerForm = document.getElementById("register-form");
 
 document.getElementById("show-login").addEventListener("click", () => {
   	registerForm.classList.remove("show");
+	registerForm.reset();
+	document.getElementById("registration-message").textContent = ""; // изчисти съобщението за регистрация
+
 	loginForm.reset();
-  	loginForm.classList.add("show");
+	document.getElementById("login-message").textContent = ""; // изчисти съобщението за вход
+	loginForm.classList.add("show");
 });
 
 document.getElementById("show-register").addEventListener("click", () => {
@@ -18,7 +22,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
 	const formData = {
     	usernameLogin: document.getElementById("login-username").value,
     	passwordLogin: document.getElementById("login-password").value
-  };
+    };
   
 	const response = await fetch("php/api.php/login", {
 		method: "POST",
@@ -27,7 +31,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
   	});
 	const result = await response.json();
 	document.getElementById("login-message").style.color = result.success ? "green" : "red";
-	document.getElementById("login-message").textContent = result.success ? "Успешна регистрация" : result.error;
+	document.getElementById("login-message").textContent = result.success ? "" : result.error;
 	
 	if (result.success) {
 		window.location.href = "dashboard.html";

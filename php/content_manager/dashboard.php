@@ -28,38 +28,3 @@ function loadDashboardData() {
         echo json_encode(['success' => false, 'error' => $e->getMessage()]);
     }
 }
-
-// function loadDashboardData() {
-//     header("Content-Type: application/json; charset=UTF-8");
-
-//     try {
-//         checkSessionSet();
-
-//         $config = parse_ini_file("config/config.ini", true);
-
-//         if (!isset($config['presentations']) || !isset($config['presentations']['path'])) {
-//             throw new Exception("Грешка: Липсва конфигурация за presentations.path в config.ini");
-//         }
-
-//         $filePath = $config['presentations']['path'];
-
-//         if (!file_exists($filePath)) {
-//             throw new Exception("Грешка: JSON файлът с презентации не е намерен.");
-//         }
-
-//         $presentationsJSON = file_get_contents($filePath);
-//         $presentations = json_decode($presentationsJSON, true);
-
-//         echo json_encode([
-//             "success" => true,
-//             "data" => $presentations,
-//             "username" => $_SESSION['username']
-//         ], JSON_UNESCAPED_UNICODE);
-
-//     } catch (Exception $e) {
-//         echo json_encode([
-//             "success" => false,
-//             "error" => $e->getMessage()
-//         ]);
-//     }
-// }
