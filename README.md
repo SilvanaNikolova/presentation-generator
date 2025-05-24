@@ -9,29 +9,32 @@
 ```
 Presentation-Generator/
 ├── index.html              # Основна страница с login/register интерфейс
-├── dashboard.html          # Страница за презентациите
+├── dashboard.html          # Страница за визуализация на презентациите
 ├── style/
-│   └── index.css           # Стилове за интерфейса
+│   └── index.css           # CSS стилове
 ├── script/
-│   └── index.js            # JavaScript логика за динамична работа с формите
-│   └── login.js            # JavaScript логика за динамична работа с формите
-│   └── logout.js           # JavaScript логика за динамична работа с формите
-│   └── register.js         # JavaScript логика за динамична работа с формите
+│   ├── index.js            # Основна JS логика
+│   ├── login.js            # Скрипт за логин форма
+│   ├── logout.js           # Скрипт за изход
+│   └── register.js         # Скрипт за регистрация
 ├── php/
-│   ├── api.php             # Начална точка за всички заявки
-│   ├── router.php          # Насочва заявките към съответните функции
-│   ├── database.php        # Клас за работа с MySQL базата
-│   ├── database-setup/     # db ddl commands for creation
-│   │   └── db_schema_changelog.sql     # for db setup view the config.ini file in backend folder
+│   ├── api.php             # Главна точка за API заявки
+│   ├── router.php          # Рутер на бекенда
+│   ├── database.php        # Клас за MySQL свързаност
+│   ├── database-setup/
+│   │   └── db_schema_changelog.sql     # SQL скрипт за създаване на базата
 │   ├── config/
-│   │   └── config.ini      # Конфигурация за достъп до базата
+│   │   └── config.ini      # Конфигурационен файл с достъп до базата и път до JSON файла
 │   ├── repository/
-│   │   ├── user.php        # Клас за потребителски операции
+│   │   ├── user.php        # Логика за потребители
+│   │   └── presentation.php # Логика за презентации (добавяне, четене)
+│   ├── presentation/
+│   │   └── populate_presentations.php  # Скрипт за попълване на презентации от JSON
 │   ├── user_access/
-│   │   ├── login.php       # Вход логика
+│   │   ├── login.php       # Логин логика
 │   │   ├── register.php    # Регистрация логика
 │   │   └── logout.php      # Изход логика
-│   └── utility.php         # Помощни функции за валидация
+│   └── utility.php         # Помощни функции
 ```
 
 ---
@@ -40,8 +43,9 @@ Presentation-Generator/
 
 1. Инсталирай [XAMPP](https://www.apachefriends.org/)
 2. Копирай проекта в `htdocs/` директорията на XAMPP
-3. Създай база данни `web_schedule` чрез phpMyAdmin
-4. Добави следната структура в `config/config.ini`:
+3. Стартирай Apache и MySQL от XAMPP Control Panel
+4. Създай база данни `web_schedule` чрез phpMyAdmin
+5. Добави следната структура в `config/config.ini`:
 
 ```ini
 [db]
@@ -51,8 +55,8 @@ user = root
 password =
 ```
 
-5. Стартирай Apache и MySQL от XAMPP
-6. Посети `http://localhost/Presentation-Generator` в браузъра
+6. (По избор) Попълни базата с примерни презентации като посетиш `http://localhost/Presentation-Generator/php/presentation/populate_presentations.php`
+7. Посети `http://localhost/Presentation-Generator` в браузъра
 
 ---
 
