@@ -19,5 +19,68 @@
         "facultyNumber": "0MI24680",
         "date": "2025-06-05",
         "place": "Зала 01"
+    },
+    {
+        "title": "Квантови изчисления: въведение",
+        "presenterName": "Стефан Георгиев",
+        "facultyNumber": "0MI13579",
+        "date": "2025-06-06",
+        "place": "Зала 202"
+    },
+    {
+        "title": "Автоматизация на бизнес процеси",
+        "presenterName": "Елена Стоянова",
+        "facultyNumber": "0MI97531",
+        "date": "2025-06-07",
+        "place": "Зала 105"
+    },
+    {
+        "title": "Роботика и машинно зрение",
+        "presenterName": "Виктор Димитров",
+        "facultyNumber": "0MI86420",
+        "date": "2025-06-08",
+        "place": "Зала 303"
+    },
+    {
+        "title": "Блокчейн технологии и приложения",
+        "presenterName": "Никола Симеонов",
+        "facultyNumber": "0MI11223",
+        "date": "2025-06-09",
+        "place": "Зала 404"
+    },
+    {
+        "title": "Мобилни приложения с Flutter",
+        "presenterName": "Яна Алексиева",
+        "facultyNumber": "0MI33445",
+        "date": "2025-06-10",
+        "place": "Зала 204"
+    },
+    {
+        "title": "Разработка на игри с Unity",
+        "presenterName": "Борислав Костов",
+        "facultyNumber": "0MI55667",
+        "date": "2025-06-11",
+        "place": "Зала 102"
+    },
+    {
+        "title": "Машинно обучение с Python",
+        "presenterName": "Ралица Генева",
+        "facultyNumber": "0MI77889",
+        "date": "2025-06-12",
+        "place": "Зала 301"
+    },
+    {
+        "title": "Езици за програмиране: минало и бъдеще",
+        "presenterName": "Калоян Тодоров",
+        "facultyNumber": "0MI99001",
+        "date": "2025-06-13",
+        "place": "Зала 002"
+    },
+    {
+        "title": "Човеко-машинен интерфейс",
+        "presenterName": "Деница Василева",
+        "facultyNumber": "0MI22334",
+        "date": "2025-06-14",
+        "place": "Зала 103"
     }
 ]

@@ -1,0 +1,42 @@
+body {
+  font-family: "Times New Roman", serif;
+  background: white;
+  color: #000;
+  margin: 40px;
+  line-height: 1.6;
+}
+
+.schedule-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.presentation-block {
+  margin-bottom: 30px;
+  page-break-inside: avoid;
+}
+
+.presentation-block p {
+  margin: 5px 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin-top: 15px;
+}
+
+.footer-note {
+  font-style: italic;
+  text-align: center;
+  margin-top: 60px;
+  color: #555;
+}

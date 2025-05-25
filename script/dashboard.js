@@ -54,14 +54,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    // kati start
     document.getElementById("print-btn").addEventListener("click", () => {
       presentationsSection.style.display = "none";
       preferencesSection.style.display = "none";
       printSection.style.display = "block";
-      title.textContent = "Разпечатване на разписание";
+      title.textContent = "Създай разписание по твой избор и го изтегли";
     });
-    // kati end
+
+    document.getElementById("view-full-pdf").addEventListener("click", () => {
+        window.open('php/schedule/schedule.php?type=full', '_blank');
+    });
+
+
+    document.getElementById("view-personal-pdf").addEventListener("click", () => {
+      const choice = document.querySelector('input[name="personal-choice"]:checked').value;
+      window.open(`php/schedule/personalSchedule.php?type=${choice}`, '_blank');
+    });
+
 
     // Бутон за изход от системата - извиква API и пренасочва към началната страница
     document.getElementById("logout-btn").addEventListener("click", async () => {
