@@ -11,15 +11,17 @@ const translatePreference = type => {
 // Основната логика се изпълнява след зареждане на страницата
 document.addEventListener("DOMContentLoaded", async () => {
 
-    // Взимат се HTML елементите за двете секции и заглавието
+    // Взимат се HTML елементите за трите секции и заглавието
     const presentationsSection = document.getElementById("presentations-section");
     const preferencesSection = document.getElementById("preferences-section");
+    const printSection = document.getElementById("print-section");
     const title = document.getElementById("section-title");
 
     // Превключване към изглед "Всички презентации"
     document.getElementById("all-presentations-btn").addEventListener("click", () => {
       presentationsSection.style.display = "block";
       preferencesSection.style.display = "none";
+      printSection.style.display = "none";
       title.textContent = "Всички презентации";
     });
 
@@ -27,6 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("preferences-btn").addEventListener("click", async () => {
         presentationsSection.style.display = "none";
         preferencesSection.style.display = "block";
+        printSection.style.display = "none";
         title.textContent = "Моите предпочитания";
 
         // Извиква се API заявка към сървъра за зареждане на предпочитания
@@ -50,6 +53,15 @@ document.addEventListener("DOMContentLoaded", async () => {
           alert("Грешка при зареждане на предпочитания: " + data.error);
         }
     });
+
+    // kati start
+    document.getElementById("print-btn").addEventListener("click", () => {
+      presentationsSection.style.display = "none";
+      preferencesSection.style.display = "none";
+      printSection.style.display = "block";
+      title.textContent = "Разпечатване на разписание";
+    });
+    // kati end
 
     // Бутон за изход от системата - извиква API и пренасочва към началната страница
     document.getElementById("logout-btn").addEventListener("click", async () => {
