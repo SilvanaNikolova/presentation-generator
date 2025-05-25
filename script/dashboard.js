@@ -71,6 +71,23 @@ document.addEventListener("DOMContentLoaded", async () => {
       window.open(`php/schedule/personalSchedule.php?type=${choice}`, '_blank');
     });
 
+    document.getElementById("download-full-csv").addEventListener("click", () => {
+      window.location.href = "php/export/export_csv.php?type=full";
+    });
+
+    document.getElementById("download-personal-csv").addEventListener("click", () => {
+      const choice = document.querySelector('input[name="personal-choice"]:checked').value;
+      window.location.href = `php/export/export_csv.php?type=${choice}`;
+    });
+
+    document.getElementById("download-full-zip").addEventListener("click", () => {
+      window.location.href = 'php/export/export_zip.php?type=full';
+    });
+
+    document.getElementById("download-personal-zip").addEventListener("click", () => {
+      const choice = document.querySelector('input[name="personal-choice"]:checked').value;
+      window.location.href = `php/export/export_zip.php?type=${choice}`;
+    });
 
     // Бутон за изход от системата - извиква API и пренасочва към началната страница
     document.getElementById("logout-btn").addEventListener("click", async () => {

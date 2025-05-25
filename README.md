@@ -43,8 +43,12 @@ Presentation-Generator/
 
 1. Инсталирай [XAMPP](https://www.apachefriends.org/)
 2. Копирай проекта в `htdocs/` директорията на XAMPP
+3. (По избор) Активирай възможност за .zip експорти:
+   1. отиди в папка `xampp\php\` и потърси конфигурационен файл `php.ini`
+   2. намери ред `;extension=zip` и премахни точката и запетаята в началото на реда, така че да стане `extension=zip`
+   3. запази промените във файла
 3. Стартирай Apache и MySQL от XAMPP Control Panel
-4. Създай база данни `web_schedule` чрез phpMyAdmin
+4. Създай база данни `web_schedule` чрез phpMyAdmin, достъпвайки следната страница `http://localhost/phpmyadmin/index.php?route=/sql&pos=0&db=web_schedule&table=user`
 5. Добави следната структура в `config/config.ini`:
 
 ```ini
@@ -54,9 +58,10 @@ name = web_schedule
 user = root
 password =
 ```
-
 6. (По избор) Попълни базата с примерни презентации като посетиш `http://localhost/Presentation-Generator/php/presentation/populate_presentations.php`
 7. Посети `http://localhost/Presentation-Generator` в браузъра
+
+
 
 ---
 
