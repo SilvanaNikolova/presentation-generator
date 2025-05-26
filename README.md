@@ -11,9 +11,11 @@ Presentation-Generator/
 ├── index.html              # Основна страница с login/register интерфейс
 ├── dashboard.html          # Страница за визуализация на презентациите
 ├── style/
-│   └── index.css           # CSS стилове
+│   └── index.css           # CSS стилове за вход/регистрация
+│   └── dashboard.css       # CSS стилове за визуализация на презентации
 ├── script/
 │   ├── index.js            # Основна JS логика
+│   └── dashboard.js        # Скрипт за зареждане на презентации
 │   ├── login.js            # Скрипт за логин форма
 │   ├── logout.js           # Скрипт за изход
 │   └── register.js         # Скрипт за регистрация
@@ -23,11 +25,13 @@ Presentation-Generator/
 │   ├── database.php        # Клас за MySQL свързаност
 │   ├── database-setup/
 │   │   └── db_schema_changelog.sql     # SQL скрипт за създаване на базата
+│   │   └── database-destroy.sql        # SQL скрипт за изтриване на базата
 │   ├── config/
 │   │   └── config.ini      # Конфигурационен файл с достъп до базата и път до JSON файла
 │   ├── repository/
-│   │   ├── user.php        # Логика за потребители
+│   │   ├── user.php         # Логика за потребители
 │   │   └── presentation.php # Логика за презентации (добавяне, четене)
+│   │   └── preference.php   # Логика за извличане на предпочитания на потребител
 │   ├── presentation/
 │   │   └── populate_presentations.php  # Скрипт за попълване на презентации от JSON
 │   ├── user_access/
